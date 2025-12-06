@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "price": 20,
+    "category": "Classic",
+    "image": "https://covers.openlibrary.org/b/isbn/9780743273565-L.jpg",
+    "description": "The story of the mysteriously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan."
+  },
+  {
+    "id": 2,
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "price": 45,
+    "category": "Programming",
+    "image": "https://covers.openlibrary.org/b/isbn/9780132350884-L.jpg",
+    "description": "Even bad code can function. But if code isn't clean, it can bring a development organization to its knees."
+  },
+  {
+    "id": 3,
+    "title": "A Brief History of Time",
+    "author": "Stephen Hawking",
+    "price": 25,
+    "category": "Science",
+    "image": "https://covers.openlibrary.org/b/isbn/9780553380163-L.jpg",
+    "description": "A landmark volume in science writing by one of the great minds of our time."
+  },
+  {
+    "id": 4,
+    "title": "1984",
+    "author": "George Orwell",
+    "price": 15,
+    "category": "Fiction",
+    "image": "https://covers.openlibrary.org/b/isbn/9780451524935-L.jpg",
+    "description": "Among the seminal texts of the 20th century, Nineteen Eighty-Four is a rare work that grows more haunting as its futuristic purgatory becomes more real."
+  },
+  {
+    "id": 5,
+    "title": "JavaScript: The Good Parts",
+    "author": "Douglas Crockford",
+    "price": 30,
+    "category": "Programming",
+    "image": "https://covers.openlibrary.org/b/isbn/9780596517748-L.jpg",
+    "description": "Most programming languages contain good and bad parts, but JavaScript has more than its share of the bad."
+  },
+  {
+    "id": 6,
+    "title": "Sapiens",
+    "author": "Yuval Noah Harari",
+    "price": 35,
+    "category": "Science",
+    "image": "https://covers.openlibrary.org/b/isbn/9780062316097-L.jpg",
+    "description": "From a renowned historian comes a groundbreaking narrative of humanity's creation and evolution."
+  }
+]

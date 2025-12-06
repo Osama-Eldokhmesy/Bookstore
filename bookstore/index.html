@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Bookstore</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <h1><i class="fas fa-book-open"></i> My Bookstore</h1>
+        <nav>
+            <a href="#" onclick="location.reload()">Home</a>
+            <a href="#" onclick="openCartModal()">Cart (<span id="cart-count">0</span>)</a>
+            <a href="#" onclick="openAddModal()">Add Book +</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div style="background: #e9ecef; padding: 20px; border-radius: 8px; margin-bottom: 20px; text-align: center;">
+            <h2>Welcome to our Featured Collection!</h2>
+            <p>Discover the best books curated just for you.</p>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search by title or author...">
+        </div>
+
+        <div class="category-filters">
+            <button onclick="filterBooks('All')" class="active-cat">All</button>
+            <button onclick="filterBooks('Programming')">Programming</button>
+            <button onclick="filterBooks('Science')">Science</button>
+            <button onclick="filterBooks('Fiction')">Fiction</button>
+            <button onclick="filterBooks('Classic')">Classic</button>
+        </div>
+
+        <div id="book-list" class="book-grid"></div>
+
+        <div class="pagination">
+            <button id="prev-btn">Previous</button>
+            <span id="page-num"> Page 1 </span>
+            <button id="next-btn">Next</button>
+        </div>
+    </div>
+
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('cart-modal')">&times;</span>
+            <h2><i class="fas fa-shopping-cart"></i> Your Shopping Cart</h2>
+            <ul id="cart-items-list" style="list-style: none; padding: 0;">
+                </ul>
+            <hr>
+            <h3>Total: $<span id="cart-total">0</span></h3>
+            <button onclick="checkout()" style="width: 100%; background: #28a745;">Checkout</button>
+        </div>
+    </div>
+
+<div id="details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('details-modal')">&times;</span>
+            <h2 id="modal-title"></h2>
+            <div style="display: flex; gap: 20px; align-items: start;">
+                <img id="modal-img" src="" alt="" style="max-width: 150px; border: 1px solid #ddd;">
+                <div>
+                    <p><strong>Author:</strong> <span id="modal-author"></span></p>
+                    <p><strong>Price:</strong> $<span id="modal-price"></span></p>
+                    <p id="modal-desc"></p>
+                    
+                    <div class="rating-section">
+                        <h3>Rate this book:</h3>
+                        <div class="stars">
+                            <i class="far fa-star" data-value="1"></i>
+                            <i class="far fa-star" data-value="2"></i>
+                            <i class="far fa-star" data-value="3"></i>
+                            <i class="far fa-star" data-value="4"></i>
+                            <i class="far fa-star" data-value="5"></i>
+                        </div>
+                        <textarea id="review-text" placeholder="Write a review..."></textarea>
+                        <button onclick="submitReview()">Submit Review</button>
+                    </div>
+                </div>
+            </div>
+            <button onclick="addToCartFromModal()" style="width:100%; margin-top:10px">Add to Cart</button>
+        </div>
+    </div>
+
+    <div id="add-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('add-modal')">&times;</span>
+            <h2>Add New Book</h2>
+            <div class="form-group"><input type="text" id="new-title" placeholder="Book Title"></div>
+            <div class="form-group"><input type="text" id="new-author" placeholder="Author"></div>
+            <div class="form-group"><input type="number" id="new-price" placeholder="Price"></div>
+            <div class="form-group">
+                <select id="new-category">
+                    <option value="Programming">Programming</option>
+                    <option value="Science">Science</option>
+                    <option value="Fiction">Fiction</option>
+                    <option value="Classic">Classic</option>
+                </select>
+            </div>
+            <div class="form-group"><input type="text" id="new-image" placeholder="Image URL (e.g., https://example.com/image.jpg)"></div>
+            
+            <div class="form-group"><textarea id="new-desc" placeholder="Description"></textarea></div>
+            <button onclick="saveNewBook()">Save Book</button>
+        </div>
+    </div>
+
+    <div id="details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('details-modal')">&times;</span>
+            <h2 id="modal-title"></h2>
+            <div style="display: flex; gap: 20px; align-items: start;">
+                <img id="modal-img" src="" alt="" style="max-width: 150px; border: 1px solid #ddd;">
+                <div>
+                    <p><strong>Author:</strong> <span id="modal-author"></span></p>
+                    <p><strong>Price:</strong> $<span id="modal-price"></span></p>
+                    <a id="modal-read-link" href="#" target="_blank" style="display:inline-block; margin-bottom:10px; color:#007bff; text-decoration:none;">
+                        <i class="fas fa-external-link-alt"></i> Read / Preview Book
+                    </a>
+                    <p id="modal-desc"></p>
+                    
+                    <div class="rating-section">
+                        <h3>Rate this book:</h3>
+                        <div class="stars">
+                            <i class="far fa-star" data-value="1"></i>
+                            <i class="far fa-star" data-value="2"></i>
+                            <i class="far fa-star" data-value="3"></i>
+                            <i class="far fa-star" data-value="4"></i>
+                            <i class="far fa-star" data-value="5"></i>
+                        </div>
+                        <textarea id="review-text" placeholder="Write a review..."></textarea>
+                        <button onclick="submitReview()">Submit Review</button>
+                    </div>
+                </div>
+            </div>
+            <button onclick="addToCartFromModal()" style="width:100%; margin-top:10px">Add to Cart</button>
+        </div>
+    </div>
+
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('edit-modal')">&times;</span>
+            <h2>Edit Book</h2>
+            <input type="hidden" id="edit-id">
+            <div class="form-group"><label>Title:</label><input type="text" id="edit-title"></div>
+            <div class="form-group"><label>Author:</label><input type="text" id="edit-author"></div>
+            <div class="form-group"><label>Price:</label><input type="number" id="edit-price"></div>
+            <div class="form-group"><label>Description:</label><textarea id="edit-desc"></textarea></div>
+            <button onclick="saveEditBook()" style="background-color: #ffc107; color: #000;">Update Book</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
