@@ -38,8 +38,3 @@ This project is a simple and responsive front-end interface for managing and dis
 | HTML5     | Page structure |
 | CSS3      | Styling, layout, animations |
 | JavaScript | Optional scripting for modals, rating logic, and dynamic filtering |
-
----
-
-## File Structure
-
