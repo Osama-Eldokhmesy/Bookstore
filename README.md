@@ -23,11 +23,11 @@ This project is a simple and responsive front-end interface for managing and dis
 - Form fields include title, description, category, and image URL.
 
 ### Rating System
-- Clickable star-based rating interface.
+- Clickable star based rating interface.
 - Stars highlight when selected.
 
 ### Responsive Design
-- Layout adjusts to desktop, tablet, and mobile screens without breaking.
+- Layout adjusts to various screen sizes.
 
 ---
 
